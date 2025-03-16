@@ -1,5 +1,4 @@
 'use client';
-import { role } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -86,6 +85,7 @@ const menuItems = [
 
 const Menu = () => {
   const router = useRouter();
+  const role = localStorage.getItem("userRole");
 
   if (!role) router.push("/");
 

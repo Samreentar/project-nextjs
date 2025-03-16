@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 // User Registration
 const registerUser = async (req, res) => {
   try {
+    console.log("Received data:", req.body)
     const { name, email, password, role } = req.body;
     const existingUser = await User.findOne({ email });
 

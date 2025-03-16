@@ -1,49 +1,13 @@
-const Exam = require("../models/Exam");
+const Exam = require("../models/Exam"); // Adjust the path if needed
 
-// ✅ Create Exam (Only Teachers)
-const createExam = async (req, res) => {
+exports.createExam = async (req, res) => {
   try {
-    if (req.user.role !== "teacher") {
-      return res.status(403).json({ message: "Only teachers can create exams" });
-    }
-
-    const { title, description, date, questions } = req.body;
-    const newExam = new Exam({
-      title,
-      description,
-      date,
-      questions,
-      createdBy: req.user.id, // Logged-in teacher ki ID
-    });
-
-    await newExam.save();
-    res.status(201).json({ message: "Exam created successfully", exam: newExam });
+    console.log("📥 Received Data:", req.body); // Debugging
+    const exam = new Exam(req.body);
+    await exam.save();
+    res.status(201).json({ message: "✅ Exam created successfully!", exam });
   } catch (error) {
-    res.status(500).json({ message: "Failed to create exam", error });
+    console.error("❌ Error creating exam:", error); // Debugging
+    res.status(500).json({ message: "Error creating exam", error });
   }
 };
-
-// ✅ Get All Exams
-const getExams = async (req, res) => {
-  try {
-    const exams = await Exam.find().populate("createdBy", "name email"); // Teacher info bhi fetch ho gi
-    res.status(200).json(exams);
-  } catch (error) {
-    res.status(500).json({ message: "Failed to fetch exams", error });
-  }
-};
-
-// ✅ Get Exam by ID
-const getExamById = async (req, res) => {
-  try {
-    const exam = await Exam.findById(req.params.id).populate("createdBy", "name email");
-    if (!exam) {
-      return res.status(404).json({ message: "Exam not found" });
-    }
-    res.status(200).json(exam);
-  } catch (error) {
-    res.status(500).json({ message: "Failed to fetch exam", error });
-  }
-};
-
-module.exports = { createExam, getExams, getExamById };

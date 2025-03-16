@@ -22,7 +22,7 @@ const ClassList: React.FC = () => {
     const fetchExams = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/exams/student-class/${studentClass}`
+          `http://localhost:4000/api/exams/student-class/${studentClass}`
         );
         setExams(response.data);
       } catch (error) {

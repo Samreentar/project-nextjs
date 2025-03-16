@@ -6,7 +6,7 @@ const mentors = [
     id: 1,
     name: "Mr. Ali Khan",
     specialization: "C++ Specialist",
-    imageSrc: "/assets/mentor/boy3.svg", // Ensure this file exists
+    imageSrc: "/assets/mentor/", // Ensure this file exists
     description:
       "A skilled mentor with deep expertise in C++ programming, focusing on efficient system design and algorithm optimization.",
   },
@@ -14,7 +14,7 @@ const mentors = [
     id: 2,
     name: "Mr. Toqeer Ahmed",
     specialization: "Python Specialist",
-    imageSrc: "/assets/mentor/boy4.png", // Ensure this file exists
+    imageSrc: "/assets/mentor/", // Ensure this file exists
     description:
       "An expert in Python programming, with a strong background in data science, AI, and scripting solutions.",
   },
@@ -22,7 +22,7 @@ const mentors = [
     id: 3,
     name: "Mr. Ahmed Raza",
     specialization: "Java Specialist",
-    imageSrc: "/assets/mentor/bay5.png", // Ensure this file exists
+    imageSrc: "/assets/mentor/", // Ensure this file exists
     description:
       "An experienced Java developer specializing in building robust and scalable enterprise applications.",
   },

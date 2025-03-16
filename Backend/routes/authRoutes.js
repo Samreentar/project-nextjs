@@ -53,4 +53,22 @@ router.post("/signup", async (req, res) => {
   }
 });
 
+
+router.post("/create", (req, res) => {
+  const token = req.headers.authorization?.split(" ")[1]; // Extract the token
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify the token
+    // Proceed with exam creation
+    const examData = req.body;
+    // Save examData to the database
+    res.status(201).json({ message: "Exam created successfully", exam: examData });
+  } catch (err) {
+    return res.status(401).json({ message: "Invalid token" });
+  }
+});
+
 module.exports = router;
